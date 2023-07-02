@@ -1,6 +1,12 @@
 function solution(A) {
-  const duplicateSet = new Set(
-    A.filter((item, index) => index !== A.indexOf(item))
-  );
-  return A.find((item) => !duplicateSet.has(item));
+  const sortedArr = A.sort();
+  let i = 0;
+  while (i < A.length) {
+    const current = sortedArr[i];
+    const next = sortedArr[i + 1];
+
+    if (current !== next) return current;
+
+    i += 2;
+  }
 }
