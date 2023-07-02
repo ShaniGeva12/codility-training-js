@@ -16,3 +16,5 @@ function solution(A) {
   }
   return minAbsSum;
 }
+
+// for some reason this still gets only 54%
