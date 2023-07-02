@@ -1,16 +1,18 @@
 function solution(A) {
-  let i = 0,
-    j = 0;
-  let minAbsSum = Math.abs(A[0] + A[0]);
+  const sorted = A.sort();
+  let left = 0,
+    right = A.length - 1;
+  let minAbsSum = Math.abs(sorted[left] + sorted[left]);
 
-  for (i = 0; i < A.length; i++) {
-    for (j = 0; j < A.length; j++) {
-      let sum = Math.abs(A[i] + A[j]);
-      if (sum < minAbsSum) {
-        minAbsSum = sum;
-      }
+  while (left <= right) {
+    let sum = sorted[right] + sorted[left];
+    minAbsSum = Math.min(minAbsSum, Math.abs(sum));
+
+    if (sum <= 0) {
+      left++;
+    } else {
+      right--;
     }
   }
-
   return minAbsSum;
 }
